@@ -1,9 +1,12 @@
 const express = require('express');
 const dotenv = require('dotenv').config();
 const router = require('./routes/userRoutes');
+const connectMongoDB = require('./config/db');
 const { handleError } = require('./middleware/errorMiddleware');
 
 const PORT = process.env.PORT || 8000;
+
+connectMongoDB();
 
 const app = express();
 
