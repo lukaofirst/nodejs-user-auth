@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler');
 const User = require('../models/userModel');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const registerUser = asyncHandler(async (req, res) => {
     const { name, email, password } = req.body;
@@ -31,6 +32,7 @@ const registerUser = asyncHandler(async (req, res) => {
             _id: user._id,
             name: user.name,
             email: user.email,
+            token: generateToken(user),
         });
     } else {
         res.status(400);
@@ -49,11 +51,21 @@ const loginUser = asyncHandler(async (req, res) => {
             _id: user._id,
             name: user.name,
             email: user.email,
+            token: generateToken(user),
         });
     } else {
         res.status(401);
         throw new Error('Invalid credentials');
     }
 });
+
+const generateToken = (id) => {
+    // Note.: You need to pass the object in the first argument
+    // because it only accepts string or object elements
+    // MongoDB works with ObjectId instead of strings
+    return jwt.sign({ id }, process.env.JWT_SECRET, {
+        expiresIn: '15d',
+    });
+};
 
 module.exports = { registerUser, loginUser };
