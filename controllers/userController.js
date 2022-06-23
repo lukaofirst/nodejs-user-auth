@@ -59,6 +59,15 @@ const loginUser = asyncHandler(async (req, res) => {
     }
 });
 
+const myProfile = asyncHandler(async (req, res) => {
+    const user = {
+        id: req.user._id,
+        email: req.user.email,
+        name: req.user.name,
+    };
+    res.status(200).json(user);
+});
+
 const generateToken = (id) => {
     // Note.: You need to pass the object in the first argument
     // because it only accepts string or object elements
@@ -68,4 +77,4 @@ const generateToken = (id) => {
     });
 };
 
-module.exports = { registerUser, loginUser };
+module.exports = { registerUser, loginUser, myProfile };
