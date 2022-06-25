@@ -1,6 +1,6 @@
 <h2>NodeJS User Auth</h2>
 
-<p>Project of a API that register, login an user, and how to protects routes.</p>
+<p>Project of an API that register, login an user, and how to protects routes.</p>
 
 <h4>Technologies and Concepts used in this project</h4>
 
