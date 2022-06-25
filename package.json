@@ -1,7 +1,7 @@
 {
     "name": "nodejs-user-auth",
     "version": "1.0.0",
-    "description": "project that contains backend authentications with NodeJS, ExpressJS and MongoDB",
+    "description": "project that contains backend authentication with NodeJS, ExpressJS and MongoDB",
     "main": "server.js",
     "scripts": {
         "start": "node server.js",
